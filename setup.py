@@ -1,6 +1,5 @@
 # from distutils.dist import Distribution
-from setuptools import setup, find_namespace_packages, Distribution
-from mng.trkcampaigns import __version__, __name__
+from setuptools import setup, Distribution, find_packages
 
 
 class BinaryDistribution(Distribution):
@@ -13,14 +12,14 @@ def parse_requirements(requirements):
         return [l.strip('\n') for l in f if l.strip('\n') and not l.startswith('#')]
 
 
-setup(name=__name__,
-      version=__version__,
-      description='Several sudoko solvers',
+setup(name='sp-coding-solutions',
+      version='1.0',
+      description='Repository for solutions for the CodingGame web',
       long_description=open('README.md').read(),
-      project_urls={'Source': 'https://bitbucket.intranet.mango.es/projects/BD/repos/mng-trkcampaigns/browse', },
+      project_urls={'Source': 'https://github.com/SP105/CodingGames', },
       author='Santiago Panizza',
-      author_email='santiago.panizza.sge@mango.com',
-      packages=find_namespace_packages(include=['mng.*'], exclude=['test*']),
+      author_email='panizzasantiago@gmail.com',
+      packages=find_packages(include=['*'], exclude=['test*']),
       include_package_data=True,
       distclass=BinaryDistribution,
       install_requires=parse_requirements('requirements.txt'),
